@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VittaFem | Bienestar Íntimo Femenino</title>
+    <meta name="description" content="Probióticos y bienestar para la mujer. Operado por FUNDACION TREBOL, NIT 900126576-7. Cali, Colombia.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+        body { font-family: 'Lato', sans-serif; background-color: #fffafb; color: #4a4a4a; }
+        .font-display { font-family: 'Playfair Display', serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fffafb; }
+        ::-webkit-scrollbar-thumb { background: #cf8a97; border-radius: 4px; }
+        
+        .text-brand-plum { color: #673c4f; }
+        .bg-brand-plum { background-color: #673c4f; }
+        .border-brand-plum { border-color: #673c4f; }
+        
+        .text-brand-rose { color: #cf8a97; }
+        .bg-brand-rose { background-color: #cf8a97; }
+        .border-brand-rose { border-color: #cf8a97; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-plum': '#673c4f',
+                        'brand-rose': '#cf8a97',
+                        'brand-blush': '#f8e9ea',
+                        'brand-light': '#fffafb'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Meta Pixel -->
+    <script>
+      const PIXEL_ID = ""; 
+      if(PIXEL_ID) {
+          !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+          function initPixel() {
+              if(localStorage.getItem('cookie_consent_ads') === 'true') {
+                  fbq('init', PIXEL_ID);
+                  fbq('track', 'PageView');
+              }
+          }
+          initPixel();
+      }
+    </script>
+</head>
+<body class="antialiased bg-brand-light" x-data="{ showTerms: false, showPrivacy: false, showCookieBanner: !localStorage.getItem('cookie_consent'), mobileMenuOpen: false }">
+
+    <!-- BARRA LEGAL META ADS -->
+    <div class="bg-brand-plum text-brand-blush text-[11px] sm:text-xs py-2 px-4 text-center tracking-wide font-light">
+        VittaFem es operado por FUNDACION TREBOL, NIT 900126576-7, con domicilio en KR 100 # 11 - 90 OF 504, Cali - Valle.
+    </div>
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header class="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b border-brand-blush shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24 py-2">
+                <!-- LOGO -->
+                <a href="#" class="flex items-center shrink-0">
+                    <img src="vittafem_logo.jpg" alt="VittaFem" class="h-20 w-auto object-contain mix-blend-multiply">
+                </a>
+                
+                <!-- MENU DESKTOP -->
+                <nav class="hidden lg:flex space-x-8 mx-auto">
+                    <a href="#" class="text-brand-plum text-sm font-bold uppercase tracking-widest hover:text-brand-rose transition">Inicio</a>
+                    <a href="#beneficios" class="text-brand-plum text-sm font-bold uppercase tracking-widest hover:text-brand-rose transition">Beneficios</a>
+                    <a href="#oferta" class="text-brand-plum text-sm font-bold uppercase tracking-widest hover:text-brand-rose transition">Productos</a>
+                    <a href="#contacto" class="text-brand-plum text-sm font-bold uppercase tracking-widest hover:text-brand-rose transition">Contacto</a>
+                </nav>
+
+                <!-- CTA & MENU MOVIL TOGGLE -->
+                <div class="flex items-center gap-4 shrink-0">
+                    <a href="#contacto" class="hidden sm:inline-flex items-center justify-center px-8 py-3 text-sm font-bold rounded-full text-white bg-brand-rose hover:bg-brand-plum transition uppercase shadow-md shadow-brand-blush">
+                        Comprar Ahora
+                    </a>
+                    
+                    <!-- Botón Hamburguesa -->
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-brand-plum p-2 focus:outline-none">
+                        <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg x-show="mobileMenuOpen" style="display: none;" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL MENU MOVIL -->
+        <div x-show="mobileMenuOpen" style="display: none;" class="lg:hidden bg-white border-t border-brand-blush px-4 py-4 space-y-3 absolute w-full z-40 shadow-xl">
+            <a @click="mobileMenuOpen = false" href="#" class="block text-brand-plum font-bold uppercase py-3 border-b border-brand-blush">Inicio</a>
+            <a @click="mobileMenuOpen = false" href="#beneficios" class="block text-brand-plum font-bold uppercase py-3 border-b border-brand-blush">Beneficios</a>
+            <a @click="mobileMenuOpen = false" href="#oferta" class="block text-brand-plum font-bold uppercase py-3 border-b border-brand-blush">Productos</a>
+            <a @click="mobileMenuOpen = false" href="#contacto" class="block text-brand-plum font-bold uppercase py-3 border-b border-brand-blush">Contacto</a>
+            <a @click="mobileMenuOpen = false" href="#contacto" class="block text-center mt-6 px-4 py-4 bg-brand-rose text-white font-bold rounded-full uppercase shadow-md">Comprar Ahora</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-16 pb-24 lg:pt-28 lg:pb-32 overflow-hidden bg-white">
+        <div class="absolute inset-0 bg-brand-blush opacity-30"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Textos Hero -->
+                <div class="text-center lg:text-left">
+                    <div class="inline-block bg-white text-brand-rose border border-brand-blush text-xs font-bold px-5 py-2 rounded-full uppercase tracking-widest mb-6 shadow-sm">Cuidado Femenino</div>
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-display text-brand-plum mb-6 leading-tight">
+                        Armonía y salud <br>
+                        <span class="italic font-light text-brand-rose">desde tu interior.</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-10 max-w-lg mx-auto lg:mx-0 font-light leading-relaxed">
+                        Probióticos formulados específicamente para la mujer. Restaura tu flora íntima, fortalece tu sistema inmune y siéntete segura todos los días.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#oferta" class="px-8 py-4 text-sm font-bold rounded-full text-white bg-brand-rose hover:bg-brand-plum transition uppercase text-center w-full sm:w-auto shadow-lg shadow-brand-blush">
+                            Ver Productos
+                        </a>
+                        <a href="#beneficios" class="px-8 py-4 text-sm font-bold rounded-full text-brand-plum border border-brand-plum hover:bg-brand-blush transition uppercase text-center w-full sm:w-auto bg-transparent">
+                            Conocer Beneficios
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Imagen Hero -->
+                <div class="relative w-full max-w-md mx-auto lg:max-w-none">
+                    <div class="aspect-[4/5] lg:aspect-square bg-white rounded-t-full overflow-hidden shadow-xl relative border-8 border-white">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" alt="Bienestar Femenino VittaFem" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Decoración circular -->
+                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-brand-rose blur-[80px] rounded-full opacity-20"></div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <section id="beneficios" class="border-y border-brand-blush bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-sm font-bold uppercase tracking-wider text-brand-plum">
+                <div class="flex flex-col items-center gap-4">
+                    <div class="w-16 h-16 rounded-full bg-brand-blush flex items-center justify-center text-brand-rose">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                    </div>
+                    <span>Salud<br>Íntima</span>
+                </div>
+                <div class="flex flex-col items-center gap-4">
+                    <div class="w-16 h-16 rounded-full bg-brand-blush flex items-center justify-center text-brand-rose">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    </div>
+                    <span>Fórmulas<br>Seguras</span>
+                </div>
+                <div class="flex flex-col items-center gap-4">
+                    <div class="w-16 h-16 rounded-full bg-brand-blush flex items-center justify-center text-brand-rose">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                    </div>
+                    <span>Ciencia y<br>Bienestar</span>
+                </div>
+                <div class="flex flex-col items-center gap-4">
+                    <div class="w-16 h-16 rounded-full bg-brand-blush flex items-center justify-center text-brand-rose">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" /></svg>
+                    </div>
+                    <span>Envíos<br>a Todo el País</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS DESTACADOS (OFERTA) -->
+    <section id="oferta" class="py-24 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-display text-brand-plum mb-4">Nuestros Probióticos</h2>
+                <div class="w-16 h-px bg-brand-rose mx-auto"></div>
+                <p class="text-gray-500 max-w-2xl mx-auto mt-6 font-light">Suplementos de alta calidad formulados específicamente para el ecosistema femenino.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <!-- PRODUCTO 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 group flex flex-col border border-brand-blush">
+                    <div class="aspect-square overflow-hidden relative bg-white p-8">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80" alt="Probióticos Flora" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow text-center">
+                        <h3 class="text-xl font-display font-bold text-brand-plum mb-2">Flora Íntima Balance</h3>
+                        <p class="text-sm text-gray-500 mb-4 font-light">Probióticos con cepas específicas para equilibrar el pH y prevenir molestias.</p>
+                        <div class="text-2xl font-bold text-brand-rose mb-6">$ 85.000 COP</div>
+                        <a href="#contacto" class="mt-auto block w-full bg-brand-plum text-white font-bold py-3.5 rounded-full hover:bg-brand-rose transition uppercase text-xs tracking-widest shadow-md">Comprar Ahora</a>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 group flex flex-col border border-brand-blush">
+                    <div class="aspect-square overflow-hidden relative bg-white p-8">
+                        <img src="https://images.unsplash.com/photo-1550572017-edb3f52478e1?auto=format&fit=crop&w=600&q=80" alt="Vitamina Diaria" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow text-center">
+                        <h3 class="text-xl font-display font-bold text-brand-plum mb-2">Daily Vitality Women</h3>
+                        <p class="text-sm text-gray-500 mb-4 font-light">Multivitamínico con probióticos añadidos para energía y salud digestiva diaria.</p>
+                        <div class="text-2xl font-bold text-brand-rose mb-6">$ 95.000 COP</div>
+                        <a href="#contacto" class="mt-auto block w-full bg-brand-plum text-white font-bold py-3.5 rounded-full hover:bg-brand-rose transition uppercase text-xs tracking-widest shadow-md">Comprar Ahora</a>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 group flex flex-col border border-brand-blush">
+                    <div class="aspect-square overflow-hidden relative bg-white p-8">
+                        <img src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=600&q=80" alt="Detox Inmune" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow text-center">
+                        <h3 class="text-xl font-display font-bold text-brand-plum mb-2">Immune Defense</h3>
+                        <p class="text-sm text-gray-500 mb-4 font-light">Refuerzo inmunológico con prebióticos y probióticos de alta absorción.</p>
+                        <div class="text-2xl font-bold text-brand-rose mb-6">$ 110.000 COP</div>
+                        <a href="#contacto" class="mt-auto block w-full bg-brand-plum text-white font-bold py-3.5 rounded-full hover:bg-brand-rose transition uppercase text-xs tracking-widest shadow-md">Comprar Ahora</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- NOSOTROS Y FAQ -->
+    <section id="nosotros" class="py-24 bg-white border-y border-brand-blush">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            
+            <!-- Nosotros -->
+            <div>
+                <h2 class="text-3xl sm:text-4xl font-display text-brand-plum mb-6">Ciencia y Bienestar Femenino</h2>
+                <div class="text-gray-600 space-y-4 mb-10 font-light leading-relaxed">
+                    <p>En VittaFem entendemos que el cuerpo de la mujer requiere un cuidado especializado. Nuestros suplementos y probióticos están desarrollados con estándares rigurosos para ofrecerte el balance perfecto de flora y bienestar general.</p>
+                </div>
+                
+                <div class="bg-brand-blush/50 p-8 rounded-3xl border border-brand-blush">
+                    <h3 class="text-brand-plum font-bold uppercase text-xs mb-5 tracking-widest">Información Corporativa</h3>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li><strong class="text-brand-plum">Operador:</strong> FUNDACION TREBOL</li>
+                        <li><strong class="text-brand-plum">NIT:</strong> 900126576-7</li>
+                        <li><strong class="text-brand-plum">Sede:</strong> KR 100 # 11 - 90 OF 504, Cali - Valle</li>
+                        <li><strong class="text-brand-plum">Contacto:</strong> ventas@vittafem.store</li>
+                        <li><strong class="text-brand-plum">Atención:</strong> 3042325525</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div x-data="{ active: null }" class="space-y-4">
+                <h2 class="text-3xl sm:text-4xl font-display text-brand-plum mb-6">Dudas Comunes</h2>
+                
+                <div class="bg-white border border-brand-blush rounded-2xl shadow-sm">
+                    <button @click="active = active === 1 ? null : 1" class="flex justify-between items-center w-full px-6 py-5 text-left font-bold text-gray-800 focus:outline-none">
+                        ¿Cómo funcionan los envíos?
+                        <svg class="h-6 w-6 text-brand-rose transform transition-transform" :class="{'rotate-180': active === 1}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="px-6 py-5 text-gray-600 border-t border-brand-blush text-sm font-light leading-relaxed" x-show="active === 1" style="display: none;">
+                        Realizamos envíos a toda Colombia. Los tiempos y costos se confirmarán al momento de que nos contactes para formalizar el pedido.
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-brand-blush rounded-2xl shadow-sm">
+                    <button @click="active = active === 2 ? null : 2" class="flex justify-between items-center w-full px-6 py-5 text-left font-bold text-gray-800 focus:outline-none">
+                        ¿Cómo se toman los probióticos?
+                        <svg class="h-6 w-6 text-brand-rose transform transition-transform" :class="{'rotate-180': active === 2}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="px-6 py-5 text-gray-600 border-t border-brand-blush text-sm font-light leading-relaxed" x-show="active === 2" style="display: none;">
+                        Cada frasco incluye las indicaciones precisas. Usualmente se recomienda 1 o 2 cápsulas diarias con alimentos. Te brindaremos la asesoría necesaria.
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-brand-blush rounded-2xl shadow-sm">
+                    <button @click="active = active === 3 ? null : 3" class="flex justify-between items-center w-full px-6 py-5 text-left font-bold text-gray-800 focus:outline-none">
+                        ¿Quién los distribuye?
+                        <svg class="h-6 w-6 text-brand-rose transform transition-transform" :class="{'rotate-180': active === 3}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="px-6 py-5 text-gray-600 border-t border-brand-blush text-sm font-light leading-relaxed" x-show="active === 3" style="display: none;">
+                        El sitio y distribución son operados legalmente por FUNDACION TREBOL, NIT 900126576-7, ubicada en Cali.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-24 relative bg-brand-light">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl sm:text-5xl font-display text-brand-plum mb-4">Inicia tu Cuidado</h2>
+            <p class="text-gray-600 mb-12 font-light">Escríbenos para brindarte asesoría personalizada y coordinar la entrega de tus productos.</p>
+            
+            <form action="mailto:ventas@vittafem.store" method="POST" enctype="text/plain" class="bg-white p-8 sm:p-12 rounded-3xl border border-brand-blush shadow-xl shadow-brand-blush/50 text-left">
+                <div class="mb-6">
+                    <label class="block text-xs font-bold text-brand-plum mb-2 uppercase tracking-widest">Tu Nombre</label>
+                    <input type="text" name="nombre" required class="w-full bg-brand-light border border-brand-blush text-gray-800 rounded-lg p-4 focus:outline-none focus:border-brand-rose focus:ring-1 focus:ring-brand-rose transition">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-xs font-bold text-brand-plum mb-2 uppercase tracking-widest">Tu Correo</label>
+                        <input type="email" name="correo" required class="w-full bg-brand-light border border-brand-blush text-gray-800 rounded-lg p-4 focus:outline-none focus:border-brand-rose focus:ring-1 focus:ring-brand-rose transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-brand-plum mb-2 uppercase tracking-widest">Tu Teléfono</label>
+                        <input type="tel" name="telefono" required class="w-full bg-brand-light border border-brand-blush text-gray-800 rounded-lg p-4 focus:outline-none focus:border-brand-rose focus:ring-1 focus:ring-brand-rose transition">
+                    </div>
+                </div>
+                <div class="mb-10">
+                    <label class="block text-xs font-bold text-brand-plum mb-2 uppercase tracking-widest">¿Qué producto necesitas?</label>
+                    <textarea name="mensaje" rows="4" required class="w-full bg-brand-light border border-brand-blush text-gray-800 rounded-lg p-4 focus:outline-none focus:border-brand-rose focus:ring-1 focus:ring-brand-rose transition resize-none"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-brand-plum text-white font-bold py-4 rounded-full hover:bg-brand-rose transition uppercase text-sm tracking-widest shadow-lg shadow-brand-blush">
+                    Enviar Solicitud
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER LEGAL -->
+    <footer class="bg-brand-plum py-16 text-center text-sm text-brand-blush">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="mb-6">
+                <p class="font-display text-3xl text-white mb-2">VittaFem</p>
+                <p class="font-light tracking-widest text-xs">PROBIOTICS FOR WOMEN</p>
+            </div>
+            <p class="mb-8 font-light leading-relaxed max-w-lg mx-auto opacity-80">
+                Operado por FUNDACION TREBOL. NIT 900126576-7.<br>KR 100 # 11 - 90 OF 504, Cali - Valle.<br>ventas@vittafem.store | 3042325525
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-8 mb-10">
+                <button @click.prevent="showTerms = true" class="hover:text-white transition font-bold uppercase tracking-widest text-xs">Términos y Condiciones</button>
+                <button @click.prevent="showPrivacy = true" class="hover:text-white transition font-bold uppercase tracking-widest text-xs">Política de Privacidad</button>
+            </div>
+            
+            <p class="text-xs opacity-60">&copy; 2026 VittaFem. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- COOKIE BANNER -->
+    <div x-show="showCookieBanner" style="display: none;" class="fixed bottom-0 inset-x-0 p-5 z-[60] bg-white border-t border-brand-blush shadow-2xl">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-gray-600 font-light">
+                Utilizamos cookies para analítica y publicidad.
+                <button @click="showPrivacy = true" class="underline text-brand-plum font-bold hover:text-brand-rose transition">Ver política</button>.
+            </p>
+            <div class="flex gap-3 shrink-0">
+                <button @click="localStorage.setItem('cookie_consent', 'true'); localStorage.setItem('cookie_consent_ads', 'true'); showCookieBanner = false; if(typeof initPixel === 'function') initPixel();" class="px-6 py-2.5 bg-brand-rose text-white text-xs font-bold rounded-full uppercase tracking-widest hover:bg-brand-plum transition">Aceptar</button>
+                <button @click="localStorage.setItem('cookie_consent', 'true'); localStorage.setItem('cookie_consent_ads', 'false'); showCookieBanner = false;" class="px-6 py-2.5 bg-brand-light text-brand-plum border border-brand-blush text-xs font-bold rounded-full uppercase tracking-widest hover:bg-brand-blush transition">Rechazar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: TÉRMINOS Y CONDICIONES -->
+    <div x-show="showTerms" style="display: none;" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" x-transition.opacity>
+        <div class="absolute inset-0 bg-brand-plum/40 backdrop-blur-sm" @click="showTerms = false"></div>
+        <div class="relative w-full max-w-4xl max-h-[85vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+            <div class="p-6 border-b border-brand-blush flex justify-between items-center bg-white z-10">
+                <h2 class="text-2xl font-display text-brand-plum">Términos y Condiciones</h2>
+                <button @click="showTerms = false" class="text-gray-400 hover:text-brand-rose transition">
+                    <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto text-gray-600 text-sm space-y-5 font-light">
+                <div class="bg-brand-light p-5 rounded-xl border border-brand-blush text-brand-plum font-bold">
+                    <p>FUNDACION TREBOL<br>NIT: 900126576-7<br>KR 100 # 11 - 90 OF 504, Cali - Valle<br>Correo: ventas@vittafem.store | Teléfono: 3042325525</p>
+                </div>
+                <h3 class="text-brand-plum font-bold text-base mt-6">1. Identificación</h3>
+                <p>El sitio web es operado por FUNDACION TREBOL, con NIT 900126576-7, y domicilio en KR 100 # 11 - 90 OF 504, Cali. La marca comercial asociada es "VittaFem".</p>
+                <h3 class="text-brand-plum font-bold text-base mt-4">2. Uso del sitio e Información Médica</h3>
+                <p>La información aquí dispuesta no reemplaza la consulta médica. Los probióticos son suplementos dietarios, no medicamentos. El usuario debe verificar sus alergias antes de consumir.</p>
+                <h3 class="text-brand-plum font-bold text-base mt-4">3. Pedidos y Envíos</h3>
+                <p>Todo pedido está sujeto a disponibilidad. Los despachos se realizan por transportadoras y los costos se calcularán durante la compra.</p>
+                <h3 class="text-brand-plum font-bold text-base mt-4">4. Retracto y Devoluciones</h3>
+                <p>Por tratarse de productos de consumo e higiene, no se aceptan devoluciones de frascos destapados o con sellos de seguridad alterados. El derecho de retracto aplica bajo términos de ley para productos intactos.</p>
+                <h3 class="text-brand-plum font-bold text-base mt-4">5. Protección de Datos</h3>
+                <p>Se rige por nuestra Política de privacidad. Los datos no se venderán a terceros.</p>
+            </div>
+            <div class="p-6 border-t border-brand-blush text-right bg-white">
+                <button @click="showTerms = false" class="px-8 py-3.5 bg-brand-plum text-white font-bold uppercase rounded-full tracking-widest text-xs hover:bg-brand-rose transition shadow-md">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: POLÍTICA DE PRIVACIDAD -->
+    <div x-show="showPrivacy" style="display: none;" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" x-transition.opacity>
+        <div class="absolute inset-0 bg-brand-plum/40 backdrop-blur-sm" @click="showPrivacy = false"></div>
+        <div class="relative w-full max-w-4xl max-h-[85vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+            <div class="p-6 border-b border-brand-blush flex justify-between items-center bg-white z-10">
+                <h2 class="text-2xl font-display text-brand-plum">Política de Privacidad</h2>
+                <button @click="showPrivacy = false" class="text-gray-400 hover:text-brand-rose transition">
+                    <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto text-gray-600 text-sm space-y-5 font-light">
+                <div class="bg-brand-light p-5 rounded-xl border border-brand-blush text-brand-plum font-bold">
+                    <p>Responsable: FUNDACION TREBOL<br>NIT: 900126576-7<br>KR 100 # 11 - 90 OF 504, Cali - Valle<br>Correo: ventas@vittafem.store | Teléfono: 3042325525</p>
+                </div>
+                <h3 class="text-brand-plum font-bold text-base mt-6">1. Uso de Datos</h3>
+                <p>Sus datos (nombre, correo, teléfono) se utilizan exclusivamente para procesar pedidos, envíos, atención al cliente y comunicaciones de VittaFem.</p>
+                <h3 class="text-brand-plum font-bold text-base mt-4">2. Analítica y Meta Pixel</h3>
+                <p>Se recopilará información sobre acciones en la página para análisis y publicidad, sujeto a su aceptación en nuestro aviso de cookies.</p>
+                <h3 class="text-brand-plum font-bold text-base mt-4">3. Privacidad en Salud</h3>
+                <p>No compartiremos, expondremos ni utilizaremos para fines no autorizados la información sensible sobre salud o condiciones íntimas que usted nos brinde en nuestras asesorías.</p>
+                <h3 class="text-brand-plum font-bold text-base mt-4">4. Derechos</h3>
+                <p>Usted puede consultar, corregir o eliminar su información escribiendo a ventas@vittafem.store en cualquier momento.</p>
+            </div>
+            <div class="p-6 border-t border-brand-blush text-right bg-white">
+                <button @click="showPrivacy = false" class="px-8 py-3.5 bg-brand-plum text-white font-bold uppercase rounded-full tracking-widest text-xs hover:bg-brand-rose transition shadow-md">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
